@@ -19,22 +19,35 @@ ul{
     text-align: center;
 }
 .Baires{
-    width: 800px;
+    width: 500px;
     height: auto;
 }
 .precios{
-    background-color: lightblue;
-    grid-area: main;
+    background-color: rgb(188, 192, 192);
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(8,auto);
-}
-.precios{
-    width: 200;
-    height: 450;
+    height: 100vh;
+    grid-template-columns:repeat(4,25%) ;
+    grid-template-rows:(4,25%) ;
+    text-align: center;
 }
 .Instrumentos{
-    width: 250;
-    height: 450;
+    width: 200px;
+    height: 200px;
+    
+}
+.Instrumentos{
+    border-color: black;
+    border-radius: 5%;
+    background-color: white;
+}
+.footer{
+    text-align: center;
+    background-color: grey;
+
+}
+.footerlogo{
+    width: 100px;
+    height: auto;
+
 }
