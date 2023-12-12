@@ -8,16 +8,20 @@ class Productos {
       this.img = img;
     }
   }
-  
-  const GuitarraCriolla = new Productos("Guitarra Criolla", 10000, 30, "./assets/img/guitarra_criolla.jpg");
-  const PianoYamaha = new Productos("Piano Yamaha", 700000, 15, "./assets/img/piano_yamaha.jpg");
-  const AuricularesSure = new Productos("Auriculares Sure", 40000, 20, "./assets/img/sure_auriculares.png");
-  const MicrofonoSure = new Productos("Microfono Sure", 30000, 24, "./assets/img/sure_microfono.png");
-  const GuitarraElectrica = new Productos("Guitarra Electrica", 350000, 35, "./assets/img/guitarra_electrica.png");
-  const Amplificador = new Productos("Amplificador", 280000, 35, "./assets/img/amplificador.png");
+  const ArrayProductos = [
+  GuitarraCriolla = new Productos("Guitarra Criolla", 10000, 30, "./assets/img/guitarra_criolla.jpg"),
+  PianoYamaha = new Productos("Piano Yamaha", 700000, 15, "./assets/img/piano_yamaha.jpg"),
+  AuricularesSure = new Productos("Auriculares Sure", 40000, 20, "./assets/img/sure_auriculares.png"),
+  MicrofonoSure = new Productos("Microfono Sure", 30000, 24, "./assets/img/sure_microfono.png"),
+  GuitarraElectrica = new Productos("Guitarra Electrica", 350000, 35, "./assets/img/guitarra_electrica.png"),
+  Amplificador = new Productos("Amplificador", 280000, 35, "./assets/img/amplificador.png"),
+  Pua = new Productos("Puas", 300, 100, "./assets/img/pua.png"),
+  Cables = new Productos("Cable", 5000, 30, "./assets/img/cable.png"),
+  Bajo = new Productos("Bajo Ibanez", 325000, 35, "./assets/img/bajo.png"),
+  Ukulele = new Productos("Ukulele", 30000, 45, "./assets/img/ukulele.png"),
 
+  ];
 
-  const ArrayProductos = [GuitarraCriolla, PianoYamaha, AuricularesSure, MicrofonoSure, GuitarraElectrica, Amplificador];
   
   ArrayProductos.forEach(producto => {
     let div = document.createElement("div");
@@ -32,8 +36,8 @@ class Productos {
     document.getElementById('contenedorproductos').appendChild(div);
   });
   
-  let cartItems = [];
-  let total = 0;
+  let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+  let total = parseFloat(localStorage.getItem('total')) || 0;
   
   function addToCart(productName, price) {
     cartItems.push({ name: productName, price: price });
@@ -69,3 +73,22 @@ class Productos {
     
     totalElement.textContent = `Total: $${total}`;
   }
+
+  function generarCardsProductos() {
+    const contenedorProductos = document.getElementById('productos');
+
+    productosDisponibles.forEach(producto => {
+        const productoElement = document.createElement('div');
+        productoElement.classList.add('producto');
+        productoElement.innerHTML = `
+            <h3>${producto.nombre}</h3>
+            <p>$${producto.precio}</p>
+            <p>$${producto.Stock}}</p>
+            <button onclick="agregarAlCarrito(${producto.Nombre}, '${producto.Precio}', ${producto.Stock})">Agregar al Carrito</button>
+        `;
+        contenedorProductos.appendChild(productoElement);
+    });
+}
+
+mostrarCarrito();
+generarCardsProductos();

@@ -68,4 +68,11 @@ justify-content: space-around;
 width: 60%;
 }
 
-  
+button {
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #035806;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+  }
